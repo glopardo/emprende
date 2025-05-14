@@ -5,7 +5,7 @@ export class CreateUserTable1747237207177 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`
         CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-        CREATE TABLE "user" (
+        CREATE TABLE public."user" (
             id UUID PRIMARY KEY DEFAULT uuid_generate_v4() NOT NULL,
             username VARCHAR(50) NOT NULL,
             first_name VARCHAR(50) NOT NULL,
@@ -21,6 +21,6 @@ export class CreateUserTable1747237207177 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`DROP TABLE "user"`)
+        await queryRunner.query(`DROP TABLE public."user"`)
     }
 }
