@@ -1,5 +1,5 @@
 // users/dto/create-user.dto.ts
-import { IsString, IsDate, IsEnum, IsNotEmpty, Matches } from 'class-validator';
+import { IsString, IsDate, IsEnum, IsNotEmpty, Matches, isString, IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 
 enum Gender {
@@ -8,6 +8,26 @@ enum Gender {
 }
 
 export class CreateUserDto {
+    @IsString()
+    @IsNotEmpty()
+    username: string;
+
+    @IsString()
+    @IsNotEmpty()
+    password: string;
+
+    @IsString()
+    @IsNotEmpty()
+    first_name: string;
+
+    @IsString()
+    @IsNotEmpty()
+    last_name: string;
+
+    @IsString()
+    @IsOptional()
+    phone_number: string;
+
     @IsString()
     @IsNotEmpty()
     @Matches(/^\d{7,9}$/, { message: 'ID number must have between 7 and 9 digits' })
